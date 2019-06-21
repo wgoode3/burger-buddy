@@ -32,7 +32,7 @@ class New extends Component {
 
   makeBurger = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:8000/api/burgers", this.state.newBurger)
+    axios.post("/api/burgers", this.state.newBurger)
       .then( res => {
         if(res.data.errors){
           this.setState({errors: res.data.errors.errors})

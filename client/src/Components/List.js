@@ -25,7 +25,7 @@ class List extends Component {
   }
 
   componentDidMount = () => {
-    axios.get("http://localhost:8000/api/burgers")
+    axios.get("/api/burgers")
       .then( res => {
         let burgers = res.data.burgers;
         for(let i=0; i< burgers.length; i++) {
@@ -48,7 +48,7 @@ class List extends Component {
   }
 
   delete = (_id) => {
-    axios.delete(`http://localhost:8000/api/burgers/${_id}`)
+    axios.delete(`/api/burgers/${_id}`)
       .then( res => {
         console.log(res);
         this.componentDidMount();

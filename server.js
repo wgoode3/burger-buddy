@@ -7,10 +7,14 @@ const express = require("express"),
 
 app.use(bp.json({limit: '1mb'}));
 app.use(cors());
-// TODO: express static?
+app.use(express.static(__dirname + "/client/build"));
 
 require("./server/utils/mongoose")(DB_NAME);
 require("./server/utils/routes")(app);
+
+app.all('*', (req, res, next) => {
+    res.sendFile(__dirname + "/client/build/index.html");
+});
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);

@@ -21,7 +21,7 @@ class Edit extends Component {
 
   componentDidMount = () => {
     console.log(this.props.match.params._id);
-    axios.get(`http://localhost:8000/api/burgers/${this.props.match.params._id}`)
+    axios.get(`/api/burgers/${this.props.match.params._id}`)
       .then( res => {
         this.setState({burger: res.data.burger});
       })
@@ -43,7 +43,7 @@ class Edit extends Component {
 
   updateBurger = (e) => {
     e.preventDefault();
-    axios.put(`http://localhost:8000/api/burgers/${this.state.burger._id}`, this.state.burger)
+    axios.put(`/api/burgers/${this.state.burger._id}`, this.state.burger)
       .then( res => {
         if(res.data.errors){
           this.setState({errors: res.data.errors.errors})
